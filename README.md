@@ -1,66 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# api rest project
+#### Este repositório apresenta uma estrutura básica da criação de uma API rest em Laravel, tomando como exemplo um pequeno projeto inicial do acervo de uma biblioteca, que se constitui de um relacionamento básico entre livros e autores correspondentes. Nessa ideia, a api criada trata-se dos dados dos livros, apresentando a estrutura de um CRUD para a manutenção do acervo.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##### Ferramentas utilizadas e guia de instalação: 
+* Laravel 8;
+* JSON PHP Extension + Banco de dados (MySQL, SQLite) + Servidor web (Apache) - recomendado: download do ambiente de desenvolvimento php Xampp.
+* Configuração correta das variáveis de ambiente (mysql e php).
+Composer
+* PHP: * Versão >= 8.2.6
+* OpenSSL PHP Extension 
+* PDO PHP Extension 
+* Composer. 
 
-## About Laravel
+##### Passo a passo:
+1. Clone o repositório para seu computador;
+2. Dentro da pasta principal do projeto crie um arquivo com o nome: .env; 
+3. Copie o conteúdo do arquivo .env.example para o arquivo .env recém criado;
+4. Acesse o repositório com um terminal e execute o comando: composer install;
+5. Ainda no terminal, gere uma application key com o comando: php artisan key:generate;
+6. Configure o arquivo .env com as configurações do banco de dados local;
+7. No terminal, execute as migrations com o comando: php artisan migrate --seed (a flag --seed serve para rodar o seeder do laravel. Neste projeto, foi usado para gerar o vendedor automaticamente do sistema).
+9. Por fim, para executar o projeto, use o comando: php artisan serve e acesse a url indicada no terminal.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#### Desenvolvimento 
+* Este projeto foi desenvolvido usando como base o framework Laravel. 
+* Desenvolvido por Larissa Rezende Fazza
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### TESTES
+##### Para testar a eficiência do código, foi utilizada a ferramenta Postman (no link https://cloudy-space-601748.postman.co/workspace/69bea052-62bd-4e81-817f-4ed463ab9fd3), onde foi possível simular todas as ações disponíveis na rota do tipo resource http://127.0.0.1:8000/api/books.
+Passo a passo da execução dos testes:
+1. Criar um registro de um livro
+ - definir o tipo de request para POST, e configurar a URL corretamente para http://127.0.0.1:8000/api/books
+ - na aba "body", selecionar o tipo de dado de entrada como 'raw' e definir como JSON
+ - inserir os dados de entrada (o request):
+   { 
+    "title": "Title", 
+    "genre": "Genero do livro",
+    "author_id": 1
+   }
+ - confirmar o envio no botão SEND
+2. Update book (atualizar registro)
+ - definir o tipo de request para PUT e alterar a URL para editar o registro desejado (três registros estão sendo gerados automaticamente pelo sistema, então, recomenda-se testar usando id = 1, id = 2 ou id = 3 para testes), portanto a url deve ser http://127.0.0.1:8000/api/books/1
+ - reinserir os dados como:
+   { 
+     "title": "Novo-titulo", 
+     "genre": "novo-genero",
+     "author_id": 1
+   }
+ - confirmar da mesma maneira da inserção
+3. Ver todos os registros de livros
+ - definir o request como GET e mudar a url para http://127.0.0.1:8000/api/books
+ - não definir parâmetros
+ - clicar no botão SEND e visualizar os dados em JSON
+4. Abrir um único livro para visualização
+- ainda no método GET, passar a id referente ao livro desejado pela url (ex: http://127.0.0.1:8000/api/books/1)
+- rodar da mesma maneira que de todos os registros.
+5. Excluir o registro de um livro:
+ - definir o método como DELETE
+ - passar a id referente ao registro pela url (ex: http://127.0.0.1:8000/api/books/1)
